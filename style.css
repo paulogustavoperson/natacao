@@ -5,49 +5,61 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     padding: 20px;
-}
-
-.container {
     display: flex;
     gap: 20px;
-    max-width: 1400px;
-    margin: 0 auto;
-    height: calc(100vh - 40px);
 }
 
-/* Painel Esquerdo */
-.painel-esquerdo {
-    flex: 1;
+#painel-esquerdo {
+    flex: 2;
     background: white;
-    border-radius: 12px;
+    border-radius: 10px;
     padding: 30px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
 }
 
-#nome-atleta {
-    color: #667eea;
-    margin-bottom: 30px;
-    font-size: 28px;
-    border-bottom: 3px solid #667eea;
-    padding-bottom: 15px;
+#painel-direito {
+    flex: 1;
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
 }
 
-#provas-container {
-    display: flex;
-    flex-direction: column;
+#painel-esquerdo h2,
+#painel-direito h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+}
+
+#atleta-info {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f5f7fa;
+    border-left: 5px solid #667eea;
+    border-radius: 5px;
+}
+
+#provas {
+    display: grid;
     gap: 20px;
 }
 
 .prova-card {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-left: 4px solid #667eea;
     padding: 20px;
     border-radius: 8px;
-    border-left: 4px solid #667eea;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -63,48 +75,22 @@ body {
     margin-bottom: 12px;
 }
 
-.prova-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+.prova-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
     font-size: 14px;
     color: #555;
 }
 
-.prova-detail-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-}
-
-.detail-label {
-    font-weight: 600;
+.prova-line strong {
     color: #667eea;
+    margin-right: 10px;
 }
 
-.detail-value {
-    color: #333;
-}
-
-/* Painel Direito */
-.painel-direito {
-    width: 280px;
-    background: white;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-
-.painel-direito h2 {
-    color: #667eea;
-    margin-bottom: 20px;
-    font-size: 20px;
-}
-
-.filtro-input {
-    padding: 12px 15px;
+#filtro-input {
+    width: 100%;
+    padding: 12px;
     border: 2px solid #ddd;
     border-radius: 8px;
     font-size: 14px;
@@ -112,15 +98,14 @@ body {
     transition: border-color 0.3s ease;
 }
 
-.filtro-input:focus {
+#filtro-input:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
 }
 
-.lista-atletas {
-    flex: 1;
-    overflow-y: auto;
+#lista-atletas {
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -136,9 +121,6 @@ body {
     font-size: 14px;
     font-weight: 500;
     color: #333;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
 }
 
 .atleta-item:hover {
@@ -152,7 +134,6 @@ body {
     border-color: #667eea;
 }
 
-/* Scrollbar Customizada */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -171,19 +152,12 @@ body {
     background: #764ba2;
 }
 
-/* Responsivo */
 @media (max-width: 1024px) {
-    .container {
-        flex-direction: column-reverse;
-        height: auto;
+    body {
+        flex-direction: column;
     }
 
-    .painel-direito {
-        width: 100%;
-        max-height: 300px;
-    }
-
-    .prova-details {
-        grid-template-columns: 1fr;
+    #painel-direito {
+        flex: 1;
     }
 }
